@@ -21,8 +21,13 @@ class Twig
         return $this->twig;
     }
 
-    private function loadViews()
+    private function loadViews(): FilesystemLoader
     {
         return new FilesystemLoader('../app/views');
+    }
+
+    public function LoadExtensions()
+    {
+        return $this->twig->addExtension(new \Twig_Extensions_Extension_Text());
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
-function dd($dump) {
+function dd($dump): void
+{
     var_dump($dump);
     die();
 

@@ -10,10 +10,12 @@ use Twig\Error\SyntaxError;
 trait View
 {
 
-    private function twig(): \Twig\Environment
+    private function twig()
     {
         $twig = new Twig;
-        return $twig->loadTwig();
+        $loadTwig = $twig->loadTwig();
+        $twig->LoadExtensions();
+        return $loadTwig;
     }
 
     /**
@@ -24,7 +26,6 @@ trait View
     public function view($data, $view)
     {
         $template = $this->twig()->load(str_replace('.', '/', $view) . '.html');
-
         return $template->display($data);
     }
 }
